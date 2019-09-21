@@ -6,7 +6,7 @@ A micro service to quickly help me setup a mock file upload server. What it does
 
 install :
 
-`npm install -g simple-file-service`
+`npm install -g @windastella/simple-file-service`
 
 run :
 

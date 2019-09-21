@@ -1,7 +1,7 @@
 {
-  "name": "simple-file-service",
+  "name": "@windastella/simple-file-service",
   "version": "1.0.0",
-  "description": "",
+  "description": "Microservice for upload and serve file",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
