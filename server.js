@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const program = require('commander');
 const express = require('express');
 const multer  = require('multer');
@@ -46,3 +48,4 @@ server.post('/upload', function (req, res, next) {
 
 
 server.listen(port, host);
+console.log(`File Service running at http://${host}:${port} serving ${dir}`);
