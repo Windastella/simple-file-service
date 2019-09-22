@@ -24,7 +24,7 @@ const host = program.host;
 const server = express();
 server.use(express.static(dir))
 
-var storage = multer.diskStorage({
+let storage = multer.diskStorage({
     destination: function (req, file, callback) {
         //var dir = './uploads';
         if (!fs.existsSync(dir)){
@@ -36,15 +36,17 @@ var storage = multer.diskStorage({
         callback(null, file.originalname);
     }
 });
-var upload = multer({storage: storage}).array('files', 12);
+
+let upload = multer({storage: storage}).array('files', 12);
+
 server.post('/upload', function (req, res, next) {
     upload(req, res, function (err) {
         if (err) {
-            return res.end("Something went wrong:(");
+            return res.end("Something went wrong.");
         }
         res.end("Upload completed.");
     });
-})
+});
 
 
 server.listen(port, host);
