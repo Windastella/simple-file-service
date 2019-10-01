@@ -4,7 +4,7 @@ const program = require('commander');
 const express = require('express');
 const multer  = require('multer');
 const fs  = require('fs');
-const path = require('path');
+const slash = require('express-slash');
 
 const app = require('./package.json');
 
@@ -23,9 +23,17 @@ const host = program.host;
 
 // Express
 const server = express();
+
+server.use(function (req, res, next) {
+    req.url = req.url.replace('//', '/');
+    next()
+  });  
+  
 server.use(express.static(dir, {
     maxAge: 31536000000
 }));
+
+
 
 let storage = multer.diskStorage({
     destination: function (req, file, callback) {
