@@ -1,6 +1,6 @@
 {
   "name": "@windastella/simple-file-service",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Microservice for upload and serve file",
   "main": "server.js",
   "scripts": {
