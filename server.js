@@ -22,7 +22,9 @@ const host = program.host;
 
 // Express
 const server = express();
-server.use(express.static(dir))
+server.use(express.static(dir, {
+    maxAge: 31536000000
+}));
 
 let storage = multer.diskStorage({
     destination: function (req, file, callback) {
