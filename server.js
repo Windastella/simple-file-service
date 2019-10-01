@@ -4,6 +4,7 @@ const program = require('commander');
 const express = require('express');
 const multer  = require('multer');
 const fs  = require('fs');
+const path = require('path');
 
 const app = require('./package.json');
 
@@ -44,10 +45,27 @@ let upload = multer({storage: storage}).array('files', 12);
 server.post('/upload', function (req, res, next) {
     upload(req, res, function (err) {
         if (err) {
-            return res.end("Something went wrong.");
+            return res.end('Unable to upload file: ' + err);
         }
-        res.end("Upload completed.");
+        res.end("File Uploaded");
     });
+});
+
+server.get('/upload', function (req, res, next) {
+    
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
+
+    fs.readdir(dir, function (err, files) {
+        //handling error
+        if (err) {
+            return res.end('Unable to scan directory: ' + err);
+        } 
+
+        res.end(JSON.stringify(files));
+    });
+    
 });
 
 
