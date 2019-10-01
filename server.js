@@ -62,7 +62,7 @@ server.get('/upload', function (req, res, next) {
         if (err) {
             return res.end('Unable to scan directory: ' + err);
         } 
-
+        res.header("Content-Type","application/json");
         res.end(JSON.stringify(files));
     });
     
@@ -70,4 +70,4 @@ server.get('/upload', function (req, res, next) {
 
 
 server.listen(port, host);
-console.log(`File Service running at http://${host}:${port} serving ${dir}`);
+console.log(`File Service ${app.version} running at http://${host}:${port} serving ${dir}`);
