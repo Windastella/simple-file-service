@@ -5,6 +5,7 @@ const express = require('express');
 const multer  = require('multer');
 const fs  = require('fs');
 const slash = require('express-slash');
+const cors = require('cors')
 
 const app = require('./package.json');
 
@@ -23,6 +24,10 @@ const host = program.host;
 
 // Express
 const server = express();
+
+server.use(cors());
+
+server.options('*', cors())
 
 server.use(function (req, res, next) {
     req.url = req.url.replace('//', '/');
